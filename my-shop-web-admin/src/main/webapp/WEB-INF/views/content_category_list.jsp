@@ -15,6 +15,8 @@
 <head>
     <title>我的商城 | 内容管理</title>
     <jsp:include page="../includes/header.jsp"></jsp:include>
+    <link rel="stylesheet" href="/static/assets/plugins/treeTable/themes/css/jquery.treetable.css" />
+    <link rel="stylesheet" href="/static/assets/plugins/treeTable/themes/css/jquery.treetable.theme.default.css"/>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -51,29 +53,33 @@
                         </div>
                         <div class="box-body">
                             <a href="#" type="button" class="btn btn-sm  btn-default"><i class="fa fa-plus"></i>新增</a>&nbsp;&nbsp;
-                            <button class="btn btn-sm  btn-default"><i class="fa fa-trash"></i>删除</button>&nbsp;&nbsp;
                             <a href="#" type="button" class="btn btn-sm  btn-default"><i class="fa fa-download"></i>导入</a>&nbsp;&nbsp;
                             <a href="/user/delete" type="button" class="btn btn-sm  btn-default"><i class="fa fa-upload"></i>导出</a>
                         </div>
 
                         <!-- /.box-header -->
                         <div class="box-body table-responsive">
-                            <table class="table table-hover" id="dataTable">
+                            <table class="table table-hover" id="treeTable">
                                 <thead>
                                 <tr>
                                     <th>ID</th>
                                     <th>名称</th>
                                     <th>排序</th>
+                                    <th>操作</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach items="${tbContentCategories}" var="tbContentCategory">
-                                    <tr>
-                                        <td>${tbContentCategory.id}</td>
-                                        <td>${tbContentCategory.name}</td>
-                                        <td>${tbContentCategory.sortOrder}</td>
-                                    </tr>
-                                </c:forEach>
+                                    <c:forEach items="${tbContentCategories}" var="tbContentCategory">
+                                        <tr data-tt-id="${tbContentCategory.id}" data-tt-parent-id ="${tbContentCategory.parentId}">
+                                            <td>${tbContentCategory.id}</td>
+                                            <td>${tbContentCategory.name}</td>
+                                            <td>${tbContentCategory.sortOrder}</td>
+                                            <td><a href="#" type="button" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i>编辑</a>&nbsp;&nbsp;&nbsp;
+                                                <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash-o">删除</i></button>&nbsp;&nbsp;&nbsp;
+                                                <a href="#" type="button" class="btn btn-sm btn-default"><i class="fa fa-plus">新增下级菜单</i></a>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
                                 </tbody>
                             </table>
                         </div>
@@ -88,8 +94,19 @@
     <jsp:include page="../includes/copyright.jsp"></jsp:include>
 </div>
 <jsp:include page="../includes/footer.jsp"></jsp:include>
+<script src="/static/assets/plugins/treeTable/themes/jquery.treetable.js"></script>
 <sys:modal/>
-
+<script>
+    $(function(){
+        $("#treeTable").treetable({
+            expendLevel:2,//默认展开层数
+            column:1,//第一列开始转换成 数状结构
+            expandable:true,//可以选定展开,默认为false,无法点击
+            stringExpand:"展开",//国际化
+            stringCollapse:"收起",//国际化
+        });
+    });
+</script>
 
 </body>
 </html>

@@ -111,7 +111,6 @@ public class TbUserServiceImpl implements TbUserService {
         params.put("length",length);
         params.put("tbUser",tbUser);
         List<TbUser> tbUsers=tbUserDao.page(params);
-        System.out.println(tbUsers.size());
         pageInfo.setData(tbUsers);
         pageInfo.setDraw(draw);
         int count=tbUserDao.count(tbUser);
