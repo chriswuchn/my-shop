@@ -121,11 +121,8 @@ my-shop-web-admin/src/main/webapp/static/assets
 .idea/my-shop.iml
 my-shop-commons/my-shop-commons.iml
 my-shop-domain/my-shop-domain.iml
-my-shop-web-admin/logs/log.log.2020-09-11
-my-shop-web-admin/logs/log.log.2020-09-12
-my-shop-web-admin/logs/log.log.2020-09-15
 my-shop-web-admin/my-shop-web-admin.iml
-my-shop-web-admin/src/main/webapp/static/assets/*
+#my-shop-web-admin/src/main/webapp/static/assets/*
 !my-shop-web-admin/src/main/webapp/static/assets/app
 my-shop-web-admin/src/test/
 .idea/vcs.xml
