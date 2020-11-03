@@ -1,5 +1,6 @@
 package com.chris.my.shop.web.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import dto.persistence.BaseEntity;
 import lombok.Data;
 
@@ -13,7 +14,5 @@ public class TbContentCategory extends BaseEntity {
     private Integer status;
     private Integer sortOrder;
     private Boolean isParent;
-
-
 }
 

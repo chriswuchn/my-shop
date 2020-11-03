@@ -18,4 +18,5 @@ public class TbContent extends BaseEntity {
     private String pic;
     private String pic2;
     private String content;
+
 }

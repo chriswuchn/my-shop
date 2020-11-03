@@ -17,6 +17,16 @@
         <include refid="selectContentCategory" />
     </select>
 
+    <select id="getById" resultType ="com.chris.my.shop.web.domain.TbContentCategory">
+        <include refid="selectContentCategory" />
+        WHERE a.id=#{id};
+    </select>
 
+    <select id="selectByPid" resultType="com.chris.my.shop.web.domain.TbContentCategory">
+        <include refid="selectContentCategory"/>
+        WHERE
+        a.parent_id=#{parentId};
+
+    </select>
 
 </mapper>

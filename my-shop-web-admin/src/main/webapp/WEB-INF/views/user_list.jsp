@@ -138,7 +138,7 @@
     <jsp:include page="../includes/copyright.jsp"></jsp:include>
 </div>
 <jsp:include page="../includes/footer.jsp"></jsp:include>
-<sys:modal/>
+<%--<sys:modal/>--%>
 <script>
     var _dataTable;
     $(function () {

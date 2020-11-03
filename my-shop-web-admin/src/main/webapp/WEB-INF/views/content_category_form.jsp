@@ -42,22 +42,33 @@
                     <c:if test="${baseResult != null}">
                         <div class="alert alert-${baseResult.status==200?"success":"danger"} alert-dismissible">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            ${baseResult.message}
+                                ${baseResult.message}
                         </div>
                     </c:if>
                     <div class="box box-info">
                         <div class="box-header with-border">
                             <h3 class="box-title">${tbContent.id!=null?"编辑":"新增"}内容</h3>
                         </div>
-                        <form:form id="inputForm" class="form-horizontal" action="/content/save" method="post" modelAttribute="tbContent">
+                        <form:form id="inputForm" class="form-horizontal" action="/content/save" method="post" modelAttribute="tbContentCategory">
                             <form:hidden path="id"></form:hidden>
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="categoryId" class="col-sm-2 control-label">父级类目</label>
                                     <div class="col-sm-10">
                                         <form:hidden path="categoryId"/>
-                                        <input id="categoryName" class="form-control required" placeholder="请选择" readonly="true" data-toggle="modal" data-target="#modal-default">
+                                        <input id="parentName" class="form-control required" placeholder="请选择" readonly="true" data-toggle="modal" data-target="#modal-default">
                                     </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name" class="col-sm-2 control-label">分类名称</label>
+                                    <div class="col-sm-10">
+                                        <form:input path="name" class="form-control required" placeholder="分类名称"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name" class="col-sm-2 control-label">分类排序</label>
+                                    <div class="col-sm-10">
+                                        <form:input path="sortOrder" class="form-control required digits" placeholder="分类排序"/>
                                 </div>
                             </div>
                             <!-- /.box-body -->

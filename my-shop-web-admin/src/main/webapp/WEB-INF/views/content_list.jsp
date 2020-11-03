@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="sys" tagdir="/WEB-INF/tags/sys"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -125,7 +125,7 @@
 </div>
 <jsp:include page="../includes/footer.jsp"></jsp:include>
 <%--自定义模态框--%>
-<sys:modal/>
+<%--<sys:modal/>--%>
 <script>
     var _dataTable;
     $(function () {

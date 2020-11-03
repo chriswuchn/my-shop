@@ -3,11 +3,15 @@ package com.chris.my.shop.web.admin.web.controller;
 
 import com.chris.my.shop.web.admin.service.TbContentCategoryService;
 import com.chris.my.shop.web.domain.TbContentCategory;
+import com.chris.my.shop.web.domain.TbUser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -23,15 +27,37 @@ public class ContentCategoryController {
     @Autowired
     private TbContentCategoryService tbContentCategoryService;
 
+    @ModelAttribute
+    public TbContentCategory getTbContentCategory(Long id){
+        TbContentCategory tbContentCategory=null;
+        if(id!=null){
+            tbContentCategoryService.getById(id);
+        }else{
+            tbContentCategory=new TbContentCategory();
+        }
+        return tbContentCategory;
+    }
+
     @RequestMapping(value="list",method= RequestMethod.GET)
     public String list(Model model){
         List<TbContentCategory> targetList=new ArrayList<>();
         List<TbContentCategory> sourceList=tbContentCategoryService.selectAll();
         //排序
         sortList(sourceList,targetList,0L);
-
         model.addAttribute("tbContentCategories",targetList);
         return "content_category_list";
+    }
+
+    /**
+     * 模态框中展示树形结构
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "tree/data",method = RequestMethod.POST)
+    public List<TbContentCategory> treeData(Long id){
+        id=(id==null)?0L:id;
+        return tbContentCategoryService.selectByPid(id);
+
     }
 
     /**
@@ -56,6 +82,8 @@ public class ContentCategoryController {
             }
         }
     }
+
+
 
 }
 

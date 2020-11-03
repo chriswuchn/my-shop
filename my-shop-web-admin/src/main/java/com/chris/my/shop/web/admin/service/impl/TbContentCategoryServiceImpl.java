@@ -18,5 +18,15 @@ public class TbContentCategoryServiceImpl implements TbContentCategoryService {
     public List<TbContentCategory> selectAll() {
         return tbContentCategoryDao.selectAll();
     }
+
+    public TbContentCategory getById(Long id) {
+        return tbContentCategoryDao.getById(id);
+    }
+
+
+    @Override
+    public List<TbContentCategory> selectByPid(Long pid) {
+        return tbContentCategoryDao.selectByPid(pid);
+    }
 }
 

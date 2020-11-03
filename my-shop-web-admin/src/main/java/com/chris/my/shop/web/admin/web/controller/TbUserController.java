@@ -90,7 +90,7 @@ public class TbUserController {
      * @param ids
      * @return
      */
-    @RequestMapping(value = "delete", method = RequestMethod.POST)
+    @RequestMapping(value = "delete", method = {RequestMethod.POST,RequestMethod.GET})
     @ResponseBody
     public BaseResult delete(String ids){
         BaseResult baseResult=null;

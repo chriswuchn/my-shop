@@ -73,8 +73,8 @@ public class TbContentController {
 
     @RequestMapping(value="search",method=RequestMethod.POST)
 //    public String search(TbUser tbUser, Model model){
-    public String search(TbUser tbUser){
-        System.out.println(tbUser);
+    public String search(TbContent tbContent){
+        System.out.println(tbContent);
 //        PageInfo<TbUser> pageInfo=new PageInfo<>();
 //        List<TbUser> tbUsers = tbUserService.search(tbUser);
 //        return tbUserService.search();
